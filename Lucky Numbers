@@ -1,0 +1,50 @@
+//Initial Template for C++
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+//User-function template for C++
+
+// Complete the function
+// n: Input n
+// Return True if the given number is a lucky number else return False
+
+class Solution{
+    
+private:
+    bool lucky(int n,int counter)
+    {
+        // base case
+        if(counter>n)
+        return 1;
+        
+        if(n%counter==0)
+        return 0;
+        
+        int next_pos=n-(n/counter);
+        return lucky(next_pos,counter+1);
+    }
+public:
+    bool isLucky(int n) {
+        
+        return lucky(n,2);
+    }
+};
+
+
+signed main(){
+    int T;
+    cin>>T;
+    while(T--){
+        int n;
+        cin>>n;
+        Solution obj;
+        //calling isLucky() function
+        if(obj.isLucky(n))
+            cout<<"1\n";//printing "1" if isLucky() returns true
+        else
+            cout<<"0\n";//printing "0" if isLucky() returns false
+    }
+    
+}  
