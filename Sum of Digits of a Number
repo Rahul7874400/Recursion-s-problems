@@ -1,0 +1,46 @@
+//Initial Template for C++
+
+
+
+#include <iostream>
+using namespace std;
+
+
+
+
+//User function Template for C++
+
+class Solution{
+  public:
+    int sumOfDigits(int n)
+    {
+         // base case
+    if(n<=0)
+    return 0;
+    
+    
+    // recursion
+    return n%10+sumOfDigits(n/10);
+    }
+};
+
+
+int main() {
+	int T;
+	
+	//taking testcases
+	cin>>T;
+	while(T--)
+	{
+	    int n;
+	    
+	    //taking input n
+	    cin>>n;
+	    
+	    //calling method sumOfDigits()
+	    Solution obj;
+	    cout<<obj.sumOfDigits(n)<<endl;
+	    
+	    
+	}
+	return 0;
