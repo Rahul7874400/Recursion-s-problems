@@ -1,0 +1,65 @@
+//Initial Template for C++
+
+
+// CPP program to generate power set
+#include <bits/stdc++.h>
+using namespace std;
+
+
+//User function Template for C++
+
+
+//Function to return the lexicographically sorted power-set of the string.
+void set_string(string s,vector <string> &v,int i,string curr)
+{
+    // base case
+    if(i==s.length())
+    {
+        v.push_back(curr);
+        return;
+    }
+    
+    // recursoin
+    set_string(s,v,i+1,curr+s[i]);
+    set_string(s,v,i+1,curr);
+    
+}
+
+vector <string> powerSet(string s)
+{
+   vector <string> v;
+   int i=0;
+   string curr="";
+   
+   set_string(s,v,i,curr);
+   return v;
+}
+
+
+
+
+int main()
+{
+    int T;
+    cin>>T;//testcases
+    while(T--)
+    {
+        string s;
+        cin>>s;//input string
+        
+        //calling powerSet() function
+        vector<string> ans = powerSet(s);
+        
+        //sorting the result of the powerSet() function
+        sort(ans.begin(),ans.end());
+        
+        //printing the result
+        for(auto x:ans)
+        cout<<x<<" ";
+        cout<<endl;
+        
+        
+    }
+
+return 0;
+}
