@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+    private:
+      void permutation(string s,int i,vector<string>& res)
+      {
+          if(i==s.length()-1)
+          {
+              res.push_back(s);
+              return;
+          }
+          
+          for(int j=i;j<s.length();j++)
+          {
+              swap(s[i],s[j]);
+              permutation(s,i+1,res);
+              swap(s[i],s[j]);
+          }
+      }
+	public:
+		vector<string>find_permutation(string S)
+		{
+		    vector<string> res;
+		    int i=0;
+		     permutation(S,i,res);
+		     sort(res.begin(),res.end());
+		     return res;
+		    
+		}
+};
+
+
+int main(){
+    int t;
+    cin >> t;
+    while(t--)
+    {
+	    string S;
+	    cin >> S;
+	    Solution ob;
+	    vector<string> ans = ob.find_permutation(S);
+	    for(auto i: ans)
+	    {
+	    	cout<<i<<" ";
+	    }
+	    cout<<"\n";
+    }
+	return 0;
+}
