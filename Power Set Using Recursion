@@ -6,7 +6,6 @@
 using namespace std;
 
 
-//User function Template for C++
 
 
 //Function to return the lexicographically sorted power-set of the string.
