@@ -1,0 +1,79 @@
+//Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+    private:
+    void solve( vector<vector<int> >& res,int b, vector<int>& a,vector<int>& all_set,int i)
+    {
+        //base case
+        if(b==0)
+        {
+            res.push_back(all_set);
+            return;
+        }
+        
+        if(i==a.size())
+        return;
+        
+        solve(res,b,a,all_set,i+1);
+        if(a[i]<=b)
+        {
+            all_set.push_back(a[i]);
+            solve(res,b-a[i],a,all_set,i);
+            //backtracing
+            all_set.pop_back();
+        }
+    }
+  public:
+    vector<vector<int> > combinationSum(vector<int> &A, int B) {
+        
+         vector<vector<int> > res;
+         vector<int> all_set;
+         sort(A.begin(),A.end());
+        vector<int>::iterator ip;
+  
+    // Using std::unique
+    ip = std::unique(A.begin(), A.begin() + A.size());
+   
+    A.resize(std::distance(A.begin(), ip));
+         solve(res,B,A,all_set,0);
+         sort(res.begin(),res.end());
+         return res;
+         
+    }
+};
+
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> A;
+        for(int i=0;i<n;i++){
+            int x;
+            cin>>x;
+            A.push_back(x);
+        }   
+        int sum;
+        cin>>sum;
+        Solution ob;
+        vector<vector<int>> result = ob.combinationSum(A, sum);
+   		if(result.size()==0){
+   			cout<<"Empty";
+   		}
+        for(int i=0;i<result.size();i++){
+            cout<<'(';
+            for(int j=0;j<result[i].size();j++){
+                cout<<result[i][j];
+                if(j<result[i].size()-1)
+                    cout<<" ";
+            }
+            cout<<")";
+        }
+        cout<<"\n";
+    }
+}	
